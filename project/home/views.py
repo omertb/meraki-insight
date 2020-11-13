@@ -20,6 +20,7 @@ def save_data(data):
 def get_validator():
     api_data = request.json
     if not api_data or 'secret' not in api_data:
+        print(api_data)
         return "invalid data", 400
 
     if api_data['secret'] != LOCSECRETKEY:

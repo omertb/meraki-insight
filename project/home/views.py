@@ -18,18 +18,8 @@ def save_data(data):
 
 @home_blueprint.route('/', methods=['GET'])
 def get_validator():
-    api_data = request.json
-    if not api_data or 'secret' not in api_data:
-        print(api_data)
-        return "invalid data", 400
-
-    if api_data['secret'] != LOCSECRETKEY:
-        print("secret invalid:", api_data['secret'])
-        return "invalid secret", 403
-    else:
-        print("secret verified: ", api_data['secret'])
-        print("validator sent to: ", request.environ['REMOTE_ADDR'])
-        return VALIDATOR
+    print("validator sent to: ", request.environ['REMOTE_ADDR'])
+    return VALIDATOR
 
 
 @home_blueprint.route('/', methods=['POST'])
